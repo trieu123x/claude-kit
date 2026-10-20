@@ -9,13 +9,13 @@ Set up the Claude starter kit for this project. Work through these steps in orde
 
 User notes: $ARGUMENTS
 
-## 0. Merge kit files into existing ones
+## 0. Prepare the kit folder
 
-The installer never overwrites files the project already had. Instead it saves the kit's versions next to them:
-- `.claude/CLAUDE.kit-template.md`: merge its sections (above all, "How we work") into the existing `CLAUDE.md`. Keep the project's existing content, and drop anything duplicated or contradictory after asking which to keep.
-- `.claude/settings.kit.json`: merge its `permissions.deny`, `permissions.ask` and `hooks.PreToolUse` guard entry into the existing `.claude/settings.json`. Don't remove the project's own rules. The result must be valid JSON.
-
-Delete each sidecar file once it's merged. If neither exists, skip this step.
+The kit was cloned straight into `.claude/`, so its instructions live in `.claude/CLAUDE.md`.
+- If `.claude/.git` exists, the project's own git will treat `.claude` as a nested repo and won't commit its files. Ask the user whether to delete `.claude/.git` so `.claude` can be committed with the project. Delete it only after they agree.
+- Delete `.claude/README.md`. It explains the kit on GitHub and isn't needed in the project.
+- If the project also has a root `CLAUDE.md` or `AGENTS.md`, both load into every session. Merge the project-specific content into `.claude/CLAUDE.md`, show the user the result, and after they confirm, replace the root file's content with a pointer or remove it. Don't lose existing project content.
+- Add `CLAUDE.local.md` and `.claude/settings.local.json` to the root `.gitignore` if they aren't already listed. Create the file if needed.
 
 ## 1. Understand the project
 
@@ -31,12 +31,11 @@ For each of Install, Dev, Build, Test (all), Test (one), Lint, Format and Typech
 - For "Test (one)", give the real syntax for running a single test file or test name with this test framework.
 - Drop any line that doesn't apply. Don't keep placeholders.
 
-## 3. Fill in CLAUDE.md
+## 3. Fill in .claude/CLAUDE.md
 
-Replace every placeholder in `CLAUDE.md` and remove the `<!-- -->` guidance comments. Rules:
+Replace every placeholder in `.claude/CLAUDE.md` and remove the `<!-- -->` guidance comments. Rules:
 - Keep it short, under ~100 lines. Include only what Claude can't work out by reading code: exact commands, non-default conventions, gotchas, generated directories not to edit, required env var *names* (never values).
 - Keep the "How we work" section as it is, unless the user asks for changes.
-- If a CLAUDE.md or AGENTS.md already had project content before the kit was installed, merge it in. Don't drop it.
 - For conventions that only matter in part of the tree (for example, only in `frontend/`), offer to put them in `.claude/rules/<name>.md` with `paths:` frontmatter instead.
 
 ## 4. Permissions
@@ -55,4 +54,4 @@ Show:
 - the files you changed,
 - anything the user should fill in by hand.
 
-Then suggest committing `CLAUDE.md` and `.claude/`.
+Then suggest committing `.claude/` and `.gitignore`.

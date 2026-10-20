@@ -10,8 +10,12 @@ Mở terminal ở thư mục gốc của dự án, rồi chạy:
 git clone https://github.com/trieu123x/claude-kit.git .claude
 ```
 
-Sau đó mở Claude Code trong dự án và gõ `/kit-setup`. Lệnh này sẽ:
-- dò stack và chạy thử các lệnh build, test, lint, rồi điền chúng vào `.claude/CLAUDE.md`
+Sau đó mở **một phiên Claude Code mới** trong dự án và gõ `/kit-setup`.
+
+> **Clone xong mới mở Claude.** Claude Code nạp danh sách skill lúc mở phiên. Nếu phiên đã mở từ trước khi clone, nó sẽ báo `/kit-setup` không tồn tại. Khi đó gõ `/reload-skills`, hoặc mở một phiên mới (trong VS Code: bấm **New session**, hay ở terminal thì thoát rồi chạy lại `claude`).
+
+`/kit-setup` sẽ:
+- dò stack và chạy thử các lệnh build, test, lint, rồi điền chúng vào `.claude/CLAUDE.md`. Với dự án trống, nó đọc các file kế hoạch như `plan.md` hay `docs/` để lấy stack, chỉ hỏi bạn những gì kế hoạch chưa nói
 - cho phép các lệnh đó chạy mà không cần hỏi
 - thêm `CLAUDE.local.md` và `.claude/settings.local.json` vào `.gitignore`
 - hỏi bạn có xoá `.claude/.git` không. Phải xoá thì mới commit được `.claude` cùng dự án.

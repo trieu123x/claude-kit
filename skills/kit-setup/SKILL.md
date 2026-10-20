@@ -21,7 +21,7 @@ The kit was cloned straight into `.claude/`, so its instructions live in `.claud
 
 - Read the README, manifests (`package.json`, `pom.xml`, `build.gradle*`, `settings.gradle*`, `pyproject.toml`, `requirements*.txt`, `go.mod`, `Cargo.toml`, `*.csproj`, `composer.json`, `Gemfile`), `Makefile`/`justfile`, `docker-compose*.yml`, CI workflows (`.github/workflows/*`), and the top two levels of the tree.
 - For a monorepo, list each package or app and its stack.
-- **Empty or near-empty repo:** don't guess. Use AskUserQuestion to ask about the language, framework, database, package manager and test framework, then fill CLAUDE.md from the answers and mark commands as "not verified yet".
+- **Empty or near-empty repo (no code yet):** read any planning documents first, such as `plan.md`, `PLAN.md`, `SPEC*.md`, `docs/**/*.md`, `README*` and design notes. Take the language, framework, libraries, layout and conventions from them. Use AskUserQuestion only for what they leave open (language, framework, database, package manager, test framework). Fill CLAUDE.md, point it at the plan file, and mark the commands as "not verified yet: no code exists".
 
 ## 2. Find and verify the commands
 

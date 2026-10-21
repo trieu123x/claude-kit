@@ -24,7 +24,7 @@ const RECURSIVE_DELETE = [
 const SECRET_READERS =
   /\b(?:cat|type|more|less|head|tail|bat|grep|rg|awk|sed|Get-Content|gc|Select-String|findstr|base64|xxd|od)\b/i;
 const SECRET_FILE =
-  /(?:^|[\s'"=\/\\])(?:\.env(?:\.(?!example\b|sample\b|template\b)[\w-]+)?|id_rsa|id_ed25519|[\w.-]+\.pem|[\w.-]+\.key)(?=$|[\s'"|;&)])/i;
+    /(?:^|[\s'"=\/\\])(?:id_rsa|id_ed25519|[\w.-]+\.pem|[\w.-]+\.key)(?=$|[\s'"|;&)])/i;
 
 /** Each rule: [decision, test(command) => boolean, reason]. First match wins, deny before ask. */
 const RULES = [
